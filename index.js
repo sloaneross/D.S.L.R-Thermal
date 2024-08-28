@@ -35,10 +35,12 @@ function printImage(fullImagePath) {
           //TODO handle error (try?)
           return
         }        
+        const imagelink = `https://www.lesbianreflex.com/frame/${filename}.png`
       
         const filePath = join(fullImagePath);
         const image = await Image.load(filePath);
         await printer.image(image, "d24")
+        await printer.qrimage(imagelink)
         printer
             .text(`${filename}`)
             .feed(2)
